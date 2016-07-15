@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../header %>
+</head>
+<body>
+<% include ../navbar %>
+
+<div class="container">
+    <h2>Supplier Page</h2>
+    <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="tab" href="#info">PRODUCT INFO</a></li>
+        <li><a data-toggle="tab" href="#images">IMAGES</a></li>
+        <li><a data-toggle="tab" href="#add-product">ADD A PRODUCT</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="info" class="tab-pane fade in active">
+            <h3>Product Info</h3>
+            <% if (products.length == 0) { %>
+            <h4>No products here yet. Add some at the "Add product" tab!</h4>
+            <% } else { products.forEach(function (product) { %>
+            <div class="row">
+                <form class="supplier-form">
+                    <input type="number" name="idProduct" value="<%= product.idProduct %>" title="idProduct" hidden>
+                    <img src="/images/products/<%= product.idProduct %>.jpg"
+                         class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+                         onerror="this.src = '/images/placeholders/no-product-image.jpg';">
+
+
+                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input class="form-control" type="text" name="name" value="<%= product.name %>" title="name"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                    <textarea class="form-control" name="description" title="description"
+                              required><%= product.description %></textarea>
+                        </div>
+                    </div>
+                    <div class="product-price col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <div class="form-group">
+                            <label>Price (USD)</label>
+                            <input class="form-control" type="number" name="price" value="<%= product.price %>"
+                                   title="price"
+                                   required>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input class="form-control" type="number" name="qty" value="<%= product.qty %>" title="qty"
+                                   required>
+                        </div>
+                        <div class="form-group pull-left">
+                            <input class="" type="checkbox" name="hidden" title="hidden"
+                                    <%= product.hidden == 1 ? "checked" : "" %>>
+                            <label>Hidden</label>
+                        </div>
+                        <div class="btn btn-block btn-danger pull-left remove-btn" data-id="<%= product.idProduct %>">
+                            Remove
+                        </div>
+                        <button class="btn btn-block btn-primary pull-right" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <% })} %>
+        </div>
+        <div id="images" class="tab-pane fade">
+            <h3>Product Images</h3>
+            <% if (products.length == 0) { %>
+            <h4>No products here yet. Add some at the "Add product" tab!</h4>
+            <% } else { products.forEach(function (product) { %>
+            <div class="row">
+                <form class="supplier-image-form" enctype="multipart/form-data" action="/save_product_image"
+                      method="post">
+                    <input type="number" name="idProduct" value="<%= product.idProduct %>" title="idProduct" hidden>
+                    <img src="/images/products/<%= product.idProduct %>.jpg"
+                         class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+                         onerror="this.src = '/images/placeholders/no-product-image.jpg';">
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                        <div><strong>Name:</strong> <%= product.name %></div>
+                        <label>Upload a new image (JPEGs only, please): <input type="file" name="productImage"></label>
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            <hr>
+            <% })} %>
+        </div>
+        <div id="add-product" class="tab-pane fade">
+            <h3>Add a product</h3>
+            <form class="add-product-form">
+                <input type="number" name="idSupplier" value="<%= user.idUser %>" title="idSupplier" hidden>
+                <div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" type="text" name="name" placeholder="Name" title="name"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                    <textarea class="form-control" name="description" title="description" placeholder="Description"
+                              required></textarea>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Price (USD)</label>
+                        <input class="form-control" type="number" name="price" title="price" placeholder="Price"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input class="form-control" type="number" name="qty" title="qty" placeholder="Quantity"
+                               required>
+                    </div>
+                    <div class="form-group pull-left">
+                        <input class="" type="checkbox" name="hidden" title="hidden">
+                        <label>Hidden</label>
+                    </div>
+                    <button class="btn btn-primary pull-right" type="submit">Add this product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<% include ../footer %>
+</body>
+</html>

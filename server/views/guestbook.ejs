@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include header %>
+</head>
+<body>
+<% include navbar %>
+<div class="container guestbook">
+    <div class="row">
+        <form class="col-md-4" id="guestbook-form">
+            <h2>Add your opinion</h2>
+            <input class="form-control" type="text" name="name" placeholder="Name" required autofocus>
+            <input class="form-control" type="email" name="email" placeholder="Email address" required>
+            <textarea class="form-control" rows="5" name="message" placeholder="Your opinion" required></textarea>
+            <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+        </form>
+        <div class="entries col-md-7 col-md-offset-1">
+            <h2>What our customers have been saying...</h2>
+            <% entries.forEach(function(entry) { %>
+            <div class="entry">
+                <p class="message"> <%- entry.message %> </p>
+                <p class="name"><strong>- <%- entry.name %> (<%- entry.email %>) </strong></p>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+<% include footer %>
+</body>
+</html>

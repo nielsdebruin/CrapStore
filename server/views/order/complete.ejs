@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./../header %>
+</head>
+<body>
+<% include ./../navbar %>
+<div class="container">
+    <div class="jumbotron">
+        <img class="logo-large pull-right" src="images/logo_large.png">
+        <h1>Order Complete, Thanks!</h1>
+        <p>Expect your order to be delivered before the end of the year..or not.</p>
+        <a class="btn btn-lg btn-primary" href="/products" role="button">Continue giving us $</a>
+    </div>
+</div>
+<script>
+    Cookies.remove("cartTotal");
+    Cookies.remove("cartItems");
+</script>
+<% include ./../footer %>
+</body>
+</html>

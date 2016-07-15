@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./../header %>
+</head>
+<body>
+<% include ./../navbar %>
+
+<div class="container">
+    <div class="row">
+        <div class="payment-order col-x2-3 col-sm-3 col-md-3 col-log-3">
+            <p><strong>Total items:</strong> <span class="f-r">$ <%= total.items %></span></p>
+            <p><strong>Shipping cost:</strong> <span class="f-r">$ <%= total.shipping %></span></p>
+            <hr>
+            <p><strong>SubTotal:</strong> <span class="f-r" id="subtotal">$ <%= total.subtotal %></span></p>
+        </div>
+        <div class="payment-information col-xs-9 col-sm-9 col-md-9 col-log-9">
+            <form class="form" action="/order/place" method="post">
+                <div class="form-group form-header">
+                    <h4 class="col-sm-12">Where do you live...</h4>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-10">
+                        <label class="control-label">Street</label>
+                        <input name="street" type="text" class="form-control" placeholder="Mekelpark" value="" required>
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="control-label">Number</label>
+                        <input name="number" type="text" class="form-control" placeholder="42" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">City</label>
+                    <input name="city" type="text" class="form-control" placeholder="Delft" required>
+                </div>
+                <div class="form-group form-header">
+                    <h4 class="col-sm-12">Please provide us with you credit card information, we will keep it safe.</h4>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Card Number</label>
+                    <input name="cardnumber" type="text" class="form-control" placeholder="0000.0000.0000.0000" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Card cvc</label>
+                    <input name="cardcvc" type="text" class="form-control" placeholder="123" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Expires</label>
+                    <input name="cardexpires" type="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Complete your order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ./../footer %>
+</body>
+</html>

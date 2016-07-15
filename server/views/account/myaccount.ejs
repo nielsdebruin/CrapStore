@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../header %>
+</head>
+<body>
+<% include ../navbar %>
+<div class="account container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-stacked nav-pills account-sidebar">
+                <li><a href="/account">My Information</a></li>
+                <li><a href="/account/orders">Previous Orders</a></li>
+                <li><a href="">Become a Supplier</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <section id="myinfo">
+                <% if (user != undefined) { %>
+                <h3>Welcome, <%= user.name %></h3>
+                <form class="form-horizontal" id="account-form">
+                    <input type="number" name="idUser" value="<%= user.idUser %>" title="idUser" hidden>
+                    <input type="checkbox" name="isAdmin" title="isAdmin"
+                            <%= user.isAdmin == 1 ? "checked" : "" %> hidden>
+                    <input type="checkbox" name="isSupplier" title="isSupplier"
+                            <%= user.isSupplier == 1 ? "checked" : "" %> hidden>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control col-sm-10" type="text" name="name" value="<%= user.name %>"
+                                   title="name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input class="form-control col-sm-10" type="email" name="email" value="<%= user.email %>"
+                                   title="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="password" name="password"
+                                   value="<%= user.password %>" title="password"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hint-select" class="col-sm-2 control-label">Favorite color</label>
+                        <div class="col-sm-10">
+                            <select name="hint" id="hint-select" class="form-control col-sm-10">
+                                <option value="blue" <%= user.hint == "blue" ? "selected" : "" %>>Blue</option>
+                                <option value="red" <%= user.hint == "red" ? "selected" : "" %>>Red</option>
+                                <option value="green" <%= user.hint == "green" ? "selected" : "" %>>Green</option>
+                                <option value="orange" <%= user.hint == "orange" ? "selected" : "" %>>Orange</option>
+                                <option value="pink" <%= user.hint == "pink" ? "selected" : "" %>>Pink</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </form>
+                <% } else { %>
+                <h2>Please log in to view your account information...</h2>
+                <% } %>
+            </section>
+            <section id="orders">
+                <% if (user != undefined) { %>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>Placed</th>
+                        <th>#Items</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% orders.forEach(function(order) { %>
+                    <tr>
+                        <td><%= order.idOrder %></td>
+                        <td><%= order.created %></td>
+                        <td><%= order.count %></td>
+                        <td>$ <%= order.total %></td>
+                    </tr>
+                    <% }); %>
+                    </tbody>
+                </table>
+                <% } else { %>
+                <h2>Please log in to view your account information...</h2>
+                <% } %>
+            </section>
+            <section id="become">
+                <% if (user != undefined) { %>
+                <h3>Become a supplier!</h3>
+                <p>Please answer these three simple questions and you can become a supplier, too!</p>
+                <form class="form-horizontal" id="become-supplier-form">
+                    <input type="number" name="idUser" value="<%= user.idUser %>" title="idUser" hidden>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="q1" title="q1" required>
+                        <label class="control-label">Do you agree to sell only cool stuff?</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="q2" title="q2" required>
+                        <label class="control-label">Do you agree to sell only products that are in compliance with your interpretation of local law?</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="q3" title="q3" required>
+                        <label class="control-label">Do you accept our terms and conditions?</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Send request</button>
+                    </div>
+                </form>
+                <% } else { %>
+                <h2>Please log in to view your account information...</h2>
+                <% } %>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="/js/account.js"></script>
+<% include ../footer %>
+</body>
+</html>

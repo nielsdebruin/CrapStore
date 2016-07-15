@@ -1,0 +1,17 @@
+form.login {
+    margin: 50px auto;
+    max-width: 300px;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+.login .btn {
+    margin: 20px 0;
+}
+
+.forgot-pass {
+    display: block;
+    margin-bottom: 20px;
+}

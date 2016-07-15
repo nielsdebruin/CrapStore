@@ -1,0 +1,48 @@
+.guestbook.container {
+    text-align: center;
+}
+
+/* FORM */
+.guestbook form {
+    display: inline-block;
+    background-color: #cccccc;
+    padding: 20px;
+    margin-bottom: 50px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.guestbook form h2 {
+    text-align: left;
+    font-size: 1.5em;
+    margin-top: 5px;
+}
+
+.guestbook .form-control {
+    margin-top: 5px;
+}
+
+.guestbook form .btn {
+    margin-top: 10px;
+}
+
+/* ENTRIES */
+.guestbook .entries {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+.guestbook .entries .message {
+    font-size: 1.2em;
+}
+
+.guestbook .entries .name {
+    font-size: 1em;
+}
+
+.guestbook .entry {
+    margin-top: 15px;
+}

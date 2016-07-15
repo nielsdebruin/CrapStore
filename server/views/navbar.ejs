@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><img class="pull-left" src="images/logo_small.png"></a>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#crapstore-nav"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="crapstore-nav">
+            <ul class="nav navbar-nav">
+                <li><a href="/products">PRODUCTS</a></li>
+                <li><a href="/guestbook">GUEST BOOK</a></li>
+                <% if (user != undefined) { %>
+                <li><a href="/account">ACCOUNT</a>
+                    <% if (user.isAdmin) { %>
+                <li><a href="/admin">ADMIN</a>
+                    <% } %>
+                    <% if (user.isSupplier) { %>
+                <li><a href="/supplier">SUPPLIER</a>
+                    <% } %>
+                    <% } %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Username-->
+                <li><a href="/account"><span class="glyphicon glyphicon-user"></span>&nbsp;<strong><%= user != undefined ? user.name : "" %></strong></a></li>
+                <!-- Cart -->
+                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> VIEW CART</a></li>
+                <!-- Log-In/Out -->
+                <li class="nav-log-btn <%= user != undefined ? 'on' : 'out' %>" id="login-out"
+                    data-inout="<%= user != undefined ? 'out' : 'in' %>">
+                    <a href="<%= user != undefined ? "/" : "login" %>"><%= user != undefined ? "LOGOUT" : "LOGIN" %></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

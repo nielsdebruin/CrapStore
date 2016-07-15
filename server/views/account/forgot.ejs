@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../header %>
+</head>
+<body>
+<% include ../navbar %>
+<div class="container">
+    <form class="login" id="forgot-form">
+        <div class="form-group">
+            <label for="email-input">Email</label>
+            <input id="email-input" type="email" name="email" class="form-control" placeholder="Email address" required>
+        </div>
+        <div class="form-group">
+            <label for="password-input">New password</label>
+            <input id="password-input" type="password" name="password" class="form-control" placeholder="New password" required>
+        </div>
+        <% include ../hintselect %>
+        <button class="register-btn btn btn-lg btn-primary btn-block" type="submit">Change password</button>
+    </form>
+</div>
+<% include ../footer %>
+</body>
+</html>

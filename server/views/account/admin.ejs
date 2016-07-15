@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--suppress HtmlFormInputWithoutLabel -->
+<html lang="en">
+<head>
+    <% include ../header %>
+</head>
+<body>
+<% include ../navbar %>
+
+<div class="container">
+    <h2>Admin page</h2>
+    <% users.forEach(function (curUser) { %>
+    <form class="form-inline admin-form">
+        <input type="number" name="idUser" value="<%= curUser.idUser %>" title="idUser" hidden>
+        <div class="form-group">
+            <input class="form-control" type="text" name="name" value="<%= curUser.name %>" title="name" required>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" value="<%= curUser.email %>" title="email" required>
+        </div>
+        <div class="form-group">
+            <label>
+                <input class="form-control" type="checkbox" name="isAdmin" title="isAdmin" id="isAdmin"
+                        <%= curUser.isAdmin == 1 ? "checked" : "" %>> Admin
+            </label>
+
+        </div>
+        <div class="form-group">
+            <label><input class="form-control" type="checkbox" name="isSupplier" title="isSupplier"
+                                           id="isSupplier" <%= curUser.isSupplier == 1 ? "checked" : "" %>> Supplier
+            </label>
+
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" value="<%= curUser.password %>" title="password"
+                   required>
+        </div>
+        <div class="form-group">
+            <label>What is your favorite color?</label>
+            <select name="hint" id="hint-select" class="form-control pull-right">
+                <option value="blue" <%= curUser.hint == "blue" ? "selected" : ""%>>Blue</option>
+                <option value="red" <%= curUser.hint == "red" ? "selected" : ""%>>Red</option>
+                <option value="green" <%= curUser.hint == "green" ? "selected" : ""%>>Green</option>
+                <option value="orange" <%= curUser.hint == "orange" ? "selected" : ""%>>Orange</option>
+                <option value="pink" <%= curUser.hint == "pink" ? "selected" : ""%>>Pink</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+    <% }) %>
+</div>
+
+<% include ../footer %>
+</body>
+</html>
