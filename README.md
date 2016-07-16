@@ -45,4 +45,4 @@ This application includes protractor tests, that assert its ability to model web
 3. Run the tests with `grunt test`
 
 ## The Team
-Developed by Georgios Andreadis (`gandreadis`) and Niels de Bruin (`ndebruin`). Feature requests and bugs can be filed in the Github Issues system.
+Developed by Georgios Andreadis (`gandreadis`) and Niels de Bruin (`nielsdebruin`). Feature requests and bugs can be filed in the Github Issues system.
