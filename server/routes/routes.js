@@ -1,9 +1,9 @@
-var multer          = require("multer");
-var base            = require("./base");
-var account         = require('./account');
-var auth            = require("./auth");
-var order           = require("./order");
-var session         = require("./../session");
+var multer = require("multer");
+var base = require("./base");
+var account = require('./account');
+var auth = require("./auth");
+var order = require("./order");
+var session = require("./../session");
 
 module.exports = function (app) {
     app.get("/", base.index);

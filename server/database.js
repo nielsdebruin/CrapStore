@@ -1,15 +1,15 @@
 var mysql = require('mysql');
 
-var pool  = mysql.createPool({
-    connectionLimit : 3300,
-    host            : 'localhost',
-    user            : 'web',
-    password        : 'pass',
+var pool = mysql.createPool({
+    connectionLimit: 3300,
+    host: 'localhost',
+    user: 'web',
+    password: 'pass',
     multipleStatements: true
 });
 
 pool.getConnection(function (err, connection) {
-    if(!err) {
+    if (!err) {
         console.log("Database is connected ...");
         connection.release();
     } else {

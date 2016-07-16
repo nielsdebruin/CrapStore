@@ -223,7 +223,7 @@ module.exports.account = {
 
 module.exports.orders = {
     "order": function (order, callback) {
-        console.log(order,order.products.join(','))
+        console.log(order, order.products.join(','));
         pool.getConnection(function (err, connection) {
             if (err) return callback(err);
 

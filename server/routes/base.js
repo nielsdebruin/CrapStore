@@ -1,7 +1,7 @@
 var queries = require("./../queries");
 var session = require("./../session");
-var isAuthenticated     = session.isAuthenticated;
-var isSupplier          = session.isSupplier;
+var isAuthenticated = session.isAuthenticated;
+var isSupplier = session.isSupplier;
 
 module.exports.index = function (req, res) {
     res.render("index", {"user": session.getSessionUser(req)});
@@ -53,7 +53,7 @@ module.exports.admin = function (req, res) {
 };
 
 module.exports.supplier = function (req, res) {
-    isSupplier(req, res, function() {
+    isSupplier(req, res, function () {
         queries.products.getBySupplier(session.getSessionUser(req).idUser, function (err, rows) {
             res.render("account/supplier", {"user": session.getSessionUser(req), "products": rows});
         });
@@ -94,7 +94,7 @@ module.exports.save_product_info = function (req, res) {
     });
 };
 
-module.exports.add_product = function(req, res, next) {
+module.exports.add_product = function (req, res, next) {
     var product = {
         name: req.body.name, qty: req.body.qty, description: req.body.description, price: req.body.price,
         hidden: req.body.hidden, idSupplier: req.body.idSupplier
@@ -104,13 +104,13 @@ module.exports.add_product = function(req, res, next) {
     });
 };
 
-module.exports.remove_product = function(req, res, next) {
+module.exports.remove_product = function (req, res, next) {
     queries.products.remove(req.body.id, function (err, result) {
         res.json({"success": true});
     });
 };
 
-module.exports.become_supplier = function(req, res) {
+module.exports.become_supplier = function (req, res) {
     queries.account.become_supplier(req.body.idUser, function (err, result) {
         res.clearCookie("sessionID", {});
         res.json({"success": true});

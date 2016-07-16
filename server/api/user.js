@@ -1,4 +1,4 @@
-var queries = require("./queries")
-module.exports.get = function(req, res, next) {
+var queries = require("./queries");
+module.exports.get = function (req, res, next) {
 
-}
+};

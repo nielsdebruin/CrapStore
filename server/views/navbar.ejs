@@ -27,9 +27,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!-- Username-->
-                <li><a href="/account"><span class="glyphicon glyphicon-user"></span>&nbsp;<strong><%= user != undefined ? user.name : "" %></strong></a></li>
+                <li><a href="/account"><span
+                                class="glyphicon glyphicon-user"></span>&nbsp;<strong><%= user != undefined ? user.name : "" %></strong></a>
+                </li>
                 <!-- Cart -->
-                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> VIEW CART</a></li>
+                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> VIEW CART</a>
+                </li>
                 <!-- Log-In/Out -->
                 <li class="nav-log-btn <%= user != undefined ? 'on' : 'out' %>" id="login-out"
                     data-inout="<%= user != undefined ? 'out' : 'in' %>">
