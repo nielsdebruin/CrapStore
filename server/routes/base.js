@@ -1,12 +1,18 @@
+/**
+ * Responsible for setting up the more general web app routes
+ */
+
 var queries = require("./../queries");
 var session = require("./../session");
 var isAuthenticated = session.isAuthenticated;
 var isSupplier = session.isSupplier;
 
+// Renders the main (index) page
 module.exports.index = function (req, res) {
     res.render("index", {"user": session.getSessionUser(req)});
 };
 
+// Renders the product page
 module.exports.products = function (req, res) {
     if (req.query.search) {
         queries.products.search(req.query.search, function (err, rows, query) {
@@ -28,30 +34,36 @@ module.exports.products = function (req, res) {
     }
 };
 
+// Renders the guestbook page
 module.exports.guestbook = function (req, res) {
     queries.guestBookEntries.getAll(function (err, rows) {
         res.render("guestbook", {"entries": rows, "user": session.getSessionUser(req)});
     });
 };
 
+// Renders the contact page
 module.exports.contact = function (req, res) {
     res.render("contact", {"user": session.getSessionUser(req)});
 };
 
+// Renders the about page
 module.exports.about = function (req, res) {
     res.render("about", {"user": session.getSessionUser(req)});
 };
 
+// Renders the supplier procedures page
 module.exports.procedures = function (req, res) {
     res.render("procedures", {"user": session.getSessionUser(req)});
 };
 
+// Renders the admin portal
 module.exports.admin = function (req, res) {
     queries.account.getAll(function (err, rows) {
         res.render("account/admin", {"user": session.getSessionUser(req), "users": rows});
     });
 };
 
+// Renders the supplier portal
 module.exports.supplier = function (req, res) {
     isSupplier(req, res, function () {
         queries.products.getBySupplier(session.getSessionUser(req).idUser, function (err, rows) {
@@ -60,6 +72,7 @@ module.exports.supplier = function (req, res) {
     });
 };
 
+// Handles guestbook entry submission requests
 module.exports.submit_entry = function (req, res, next) {
     queries.guestBookEntries.add({
         name: req.body.name,
