@@ -1,7 +1,7 @@
 {
   "name": "crapstore",
-  "version": "1.0.0",
-  "description": "Badstore clone in NodeJS / Express",
+  "version": "0.2.0",
+  "description": "A webshop made to be exploited",
   "main": "gruntfile.js",
   "directories": {
     "test": "tests"
@@ -37,7 +37,10 @@
     "type": "git",
     "url": "git+https://github.com/nielsdebruin/CrapStore.git"
   },
-  "author": "Georgios Andreadis / Niels de Bruin",
+  "authors": [
+    "Georgios Andreadis",
+    "Niels de Bruin"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nielsdebruin/CrapStore/issues"

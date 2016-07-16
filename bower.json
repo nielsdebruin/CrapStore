@@ -1,20 +1,12 @@
 {
   "name": "crapstore",
-  "description": "Badstore clone in NodeJS / Express",
+  "description": "A webshop made to be exploited",
   "main": "gulpfile.js",
   "authors": [
     "Georgios Andreadis / Niels de Bruin"
   ],
   "license": "ISC",
   "homepage": "https://github.com/nielsdebruin/CrapStore",
-  "moduleType": [],
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
     "bootstrap": "3.3.4",
     "js-cookie": "~2.1.0"

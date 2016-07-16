@@ -1,5 +1,5 @@
-describe('Crapstore security tests: ', function() {
-    it("should say there are 4 (non hidden) products in our store.", function() {
+describe('Crapstore security tests: ', function () {
+    it("should say there are 4 (non hidden) products in our store.", function () {
         browser.ignoreSynchronization = true;
         browser.get("http://localhost:1337/products");
 
@@ -8,32 +8,36 @@ describe('Crapstore security tests: ', function() {
         expect(products.count()).toEqual(4)
     });
 
-    it("should test for XSS vulnerability when creating a new entry", function() {
+    it("should test for XSS vulnerability when creating a new entry", function () {
         browser.ignoreSynchronization = true;
         browser.get("http://localhost:1337/guestbook");
 
-        var form    = element(by.css("#guestbook-form"));
-        var name    = form.element(by.css('input[name="name"]'));
-        var email   = form.element(by.css('input[name="email"]'));
+        var form = element(by.css("#guestbook-form"));
+        var name = form.element(by.css('input[name="name"]'));
+        var email = form.element(by.css('input[name="email"]'));
         var message = form.element(by.css('textarea[name="message"]'));
 
         name.sendKeys("Test User");
         email.sendKeys("test@test.com");
-        message.sendKeys('hello, I am a test user.<script>$(".navbar-brand").html("GoodStore")</script>');
+        message.sendKeys('hello, I am a test user.<script>$(".navbar-brand").text("GoodStore")</script>');
 
         form.submit();
 
-        var logo = element.all(by.css(".navbar-brand")).get(0).getText().then( function(new_text){
+        browser.get("http://localhost:1337/");
+        browser.get("http://localhost:1337/guestbook");
+
+        var logo = element.all(by.css(".navbar-brand")).get(0).getText().then(function (new_text) {
             expect(new_text).toBe("GoodStore");
         });
+
     });
 
-    it("should test for SQL Injection to find the secret products", function() {
+    it("should test for SQL Injection to find the secret products", function () {
         browser.ignoreSynchronization = true;
         browser.get("http://localhost:1337/products");
 
-        var form        = element(by.css(".product-search-form"));
-        var search      = form.element(by.css('.search-term'));
+        var form = element(by.css(".product-search-form"));
+        var search = form.element(by.css('.search-term'));
 
         search.sendKeys("' OR true OR '");
         form.submit();
@@ -43,14 +47,14 @@ describe('Crapstore security tests: ', function() {
     });
 
 
-    it("should test that your final payment depends on the cookie", function() {
+    it("should test that your final payment depends on the cookie", function () {
         browser.ignoreSynchronization = true;
         browser.get("http://127.0.0.1:1337/login");
 
         // Retrieve the login form
-        var form        = element(by.css("#login-form"));
-        var email       = form.element(by.css('input[name="email"]'));
-        var password    = form.element(by.css('input[name="password"]'));
+        var form = element(by.css("#login-form"));
+        var email = form.element(by.css('input[name="email"]'));
+        var password = form.element(by.css('input[name="password"]'));
 
         // Populate
         email.sendKeys("nielsdebruin@gmail.com");
@@ -75,15 +79,15 @@ describe('Crapstore security tests: ', function() {
         browser.manage().addCookie('cartTotal', newPrice, '/', '127.0.0.1');
 
         // Make sure it has been changed
-        browser.manage().getCookie('cartTotal').then(function(cookie) {
+        browser.manage().getCookie('cartTotal').then(function (cookie) {
             expect(cookie.value).toEqual('0.42');
         });
 
         browser.get('http://127.0.0.1:1337/payment');
 
-        var subtotal        = element(by.css('#subtotal')).getText();
+        var subtotal = element(by.css('#subtotal')).getText();
 
         // See if subtotal has changed - subtotal should equal shipping(2*newPrice) + newPrice;
-        expect(subtotal).toEqual('$ '+newPrice*3);
+        expect(subtotal).toEqual('$ ' + newPrice * 3);
     });
 });
