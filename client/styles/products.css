@@ -1,9 +1,6 @@
+/* PRODUCT LIST*/
 .product-list {
     margin-top: 70px;
-}
-
-.search-fail {
-    margin-bottom: 50px;
 }
 
 .product {
@@ -12,6 +9,7 @@
     text-align: left;
     display: block;
 }
+
 .product img {
     display: block;
     width: 150px;
@@ -19,29 +17,32 @@
     max-height: 300px;
     margin-bottom: 0.5em;
 }
+
 .product-meta {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .product-meta p {
     text-transform: uppercase;
     font-weight: 700;
 }
-.product-meta span {
 
-}
-.product-in-cart {
-
+/* PRODUCT SEARCH */
+.search-fail {
+    margin-bottom: 50px;
 }
 
 .product-search-form {
     float: right;
 }
+
 .search-term {
     margin-right: -5px;
     -webkit-border-radius: 25px 0 0 25px;
     -moz-border-radius: 25px 0 0 25px;
     border-radius: 25px 0 0 25px;
 }
+
 .search-term-btn {
     -webkit-border-radius: 0 25px 25px 0;
     -moz-border-radius: 0 25px 25px 0;

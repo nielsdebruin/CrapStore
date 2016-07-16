@@ -1,11 +1,16 @@
-var multer          = require("multer");
-var base            = require("./base");
-var account         = require('./account');
-var auth            = require("./auth");
-var order           = require("./order");
-var session         = require("./../session");
+/**
+ * Connects all route functionality to the appropriate HTTP methods and route names
+ */
+
+var multer = require("multer");
+var base = require("./base");
+var account = require('./account');
+var auth = require("./auth");
+var order = require("./order");
+var session = require("./../session");
 
 module.exports = function (app) {
+    // General routes
     app.get("/", base.index);
     app.get("/guestbook", base.guestbook);
     app.get("/products", base.products);
@@ -48,7 +53,6 @@ module.exports = function (app) {
             cb(null, req.body.idProduct + ".jpg")
         }
     });
-
     var upload = multer({storage: storage});
     app.post("/save_product_image", upload.single("productImage"), base.supplier);
 };

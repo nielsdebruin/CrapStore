@@ -27,7 +27,7 @@
         </div>
         <div class="form-group">
             <label><input class="form-control" type="checkbox" name="isSupplier" title="isSupplier"
-                                           id="isSupplier" <%= curUser.isSupplier == 1 ? "checked" : "" %>> Supplier
+                          id="isSupplier" <%= curUser.isSupplier == 1 ? "checked" : "" %>> Supplier
             </label>
 
         </div>
@@ -38,11 +38,11 @@
         <div class="form-group">
             <label>What is your favorite color?</label>
             <select name="hint" id="hint-select" class="form-control pull-right">
-                <option value="blue" <%= curUser.hint == "blue" ? "selected" : ""%>>Blue</option>
-                <option value="red" <%= curUser.hint == "red" ? "selected" : ""%>>Red</option>
-                <option value="green" <%= curUser.hint == "green" ? "selected" : ""%>>Green</option>
-                <option value="orange" <%= curUser.hint == "orange" ? "selected" : ""%>>Orange</option>
-                <option value="pink" <%= curUser.hint == "pink" ? "selected" : ""%>>Pink</option>
+                <option value="blue" <%= curUser.hint == "blue" ? "selected" : "" %>>Blue</option>
+                <option value="red" <%= curUser.hint == "red" ? "selected" : "" %>>Red</option>
+                <option value="green" <%= curUser.hint == "green" ? "selected" : "" %>>Green</option>
+                <option value="orange" <%= curUser.hint == "orange" ? "selected" : "" %>>Orange</option>
+                <option value="pink" <%= curUser.hint == "pink" ? "selected" : "" %>>Pink</option>
             </select>
         </div>
         <button class="btn btn-primary" type="submit">Save</button>

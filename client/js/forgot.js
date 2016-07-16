@@ -1,4 +1,9 @@
+/**
+ * Event handler for the 'Forgot Password' page
+ */
+
 $(document).ready(function () {
+    // Handles 'Forgot Password' form submissions (used for resetting the password)
     $("#forgot-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();
@@ -11,7 +16,7 @@ $(document).ready(function () {
                 $(".alert-warning").remove();
                 $(".register-btn").after($("<div class='alert alert-success'>").html("<strong>Password changed!</strong> Redirecting " +
                     "you to the login page."));
-                setTimeout(function() {
+                setTimeout(function () {
                     location.href = "login";
                 }, 3000);
             }

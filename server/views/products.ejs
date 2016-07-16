@@ -10,44 +10,47 @@
     <form class="product-search-form navbar-form navbar-right" role="search" action="products" method="get">
         <div class="form-group">
             <input class="search-term form-control" type="text" name="search" placeholder="Search" required>
-            <button class="btn btn-default search-term-btn" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+            <button class="btn btn-default search-term-btn" type="submit"><span
+                        class="glyphicon glyphicon-search"></span></button>
         </div>
     </form>
     <% if (term && products.length != 0) { %>
-    <h2>Results for <%- term %></h2>
+    <h2>Results for <%- term; %></h2>
     <% } %>
     <% if (query !== undefined) { %>
     <button id="search-back" class="btn btn-default">View all products</button>
-    <% }%>
+    <% } %>
     <div class="product-list">
         <% if (products.length == 0) { %>
         <div class="search-fail">
-            <% if (query == undefined) {%>
+            <% if (query == undefined) { %>
             <h2>No products here at the moment - probably some maintenance. Check back later to browse through our cool
-            products!</h2>
+                products!</h2>
             <% } else { %>
             <h2>Sorry, we couldn't find what you were looking for.</h2>
             <p><%= query %></p>
             <% } %>
         </div>
-        <% }%>
+        <% } %>
 
         <% products.forEach(function(p) { %>
         <div class="row product">
             <div class="product-image col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <img class="product-image"
-                     src="/images/products/<%= p.idProduct %>.jpg" onerror="this.src = '/images/placeholders/no-product-image.jpg';">
+                     src="/images/products/<%= p.idProduct %>.jpg"
+                     onerror="this.src = '/images/placeholders/no-product-image.jpg';">
             </div>
             <div class="product-meta col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <p class="product-title"><%- p.name %></p>
-                <span><%- p.description %></span>
+                <p class="product-title"><%- p.name; %></p>
+                <span><%- p.description; %></span>
             </div>
             <div class="product-price col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <strong>$<%- p.price %></strong><br>
-                <a class="btn btn-primary m-t-s addToCartBtn" data-id="<%= p.idProduct %>" data-price="<%- p.price %>">ADD TO CART</a>
+                <strong>$<%- p.price; %></strong><br>
+                <a class="btn btn-primary m-t-s addToCartBtn" data-id="<%= p.idProduct %>" data-price="<%- p.price; %>">ADD
+                    TO CART</a>
             </div>
         </div>
-        <% }); %>
+        <% }) %>
     </div>
 </div>
 

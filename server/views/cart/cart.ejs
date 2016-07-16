@@ -14,18 +14,20 @@
             <h3>Looks like your cart is empty. Go and put some cool products in it!</h3>
         </div>
         <% } else { products.forEach(function(p) { %>
-        <div class="row product" id="<%= p.idProduct%>">
-            <img  class="product col-xs-3 col-sm-3 col-md-3 col-lg-3" src="/images/products/<%= p.idProduct %>.jpg">
+        <div class="row product" id="<%= p.idProduct %>">
+            <img class="product col-xs-3 col-sm-3 col-md-3 col-lg-3" src="/images/products/<%= p.idProduct %>.jpg">
             <div class="product-meta col-xs-7 col-sm-7 col-md-7 col-lg-7">
                 <p class="product-title"><%= p.name %></p>
                 <span><%= p.description %></span>
             </div>
             <div class="product-price col-xs-2 col-sm-2 col-md-2 col-lg-2">
                 <strong>$<%= p.price %></strong>
-                <a class="btn btn-danger m-t-s" onclick="cart.remove(<%= '"'+p.idProduct+'"' %>, <%= p.price %>);$('#<%= p.idProduct%>').remove();">REMOVE FROM CART</a>
+                <a class="btn btn-danger m-t-s"
+                   onclick="cart.remove(<%= '"' + p.idProduct + '"' %>, <%= p.price %>);$('#<%= p.idProduct %>').remove();">REMOVE
+                    FROM CART</a>
             </div>
         </div>
-        <% });} %>
+        <% })} %>
         <hr>
 
         <div class="row">

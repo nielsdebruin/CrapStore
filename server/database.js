@@ -1,15 +1,21 @@
+/**
+ * Responsible for connecting to the MySQL database
+ */
+
 var mysql = require('mysql');
 
-var pool  = mysql.createPool({
-    connectionLimit : 3300,
-    host            : 'localhost',
-    user            : 'web',
-    password        : 'pass',
+// Create a MySQL connection pool
+var pool = mysql.createPool({
+    connectionLimit: 3300,
+    host: 'localhost',
+    user: 'web',
+    password: 'pass',
     multipleStatements: true
 });
 
+// Determine whether the database was connected with the web server successfully
 pool.getConnection(function (err, connection) {
-    if(!err) {
+    if (!err) {
         console.log("Database is connected ...");
         connection.release();
     } else {
