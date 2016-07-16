@@ -1,9 +1,12 @@
+/* JUMBOTRON */
 .logo-large {
     position: relative;
 }
+
 .splash-main {
     margin-top: 50px;
 }
+
 .splash-main .jumbotron {
     background: #FFFFFF;
 }

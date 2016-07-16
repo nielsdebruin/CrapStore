@@ -1,10 +1,7 @@
+/* LOGIN FORM */
 form.login {
     margin: 50px auto;
     max-width: 300px;
-}
-
-select {
-    margin-bottom: 10px;
 }
 
 .login .btn {
