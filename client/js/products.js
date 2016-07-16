@@ -1,20 +1,20 @@
 $(document).ready(function () {
-    $("#search-back").on("click", function() {
+    $("#search-back").on("click", function () {
         location.href = "products";
     });
 });
 
-$(document).ready(function() {
-    $(".addToCartBtn").each(function() {
-        if(cart.inCart($(this).data("id").toString())) {
+$(document).ready(function () {
+    $(".addToCartBtn").each(function () {
+        if (cart.inCart($(this).data("id").toString())) {
             $(this).removeClass("btn-primary");
             $(this).html("IN CART");
             $(this).addClass("product-in-cart btn-success");
         }
-    })
+    });
 
-    $(".addToCartBtn").click(function() {
-        var el = $(this)
+    $(".addToCartBtn").click(function () {
+        var el = $(this);
         if (el.hasClass("product-in-cart")) {
             // Product already in cart
             $(this).removeClass("btn-success product-in-cart");
@@ -29,4 +29,4 @@ $(document).ready(function() {
             cart.add(el.data("id").toString(), el.data("price"));
         }
     })
-})
+});

@@ -1,11 +1,11 @@
-(function() {
+(function () {
     var $selection = $(".account section");
     $selection.hide();
     $selection.first().show();
-    $(".account-sidebar a").click(function(e) {
+    $(".account-sidebar a").click(function (e) {
         e.preventDefault();
         $(".account section").hide();
-        $(".account section:nth-child("+($(".account-sidebar a").index($(this))+1)+")").show()
+        $(".account section:nth-child(" + ($(".account-sidebar a").index($(this)) + 1) + ")").show()
     });
 
     $("#account-form").on("submit", function (e) {

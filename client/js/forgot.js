@@ -11,7 +11,7 @@ $(document).ready(function () {
                 $(".alert-warning").remove();
                 $(".register-btn").after($("<div class='alert alert-success'>").html("<strong>Password changed!</strong> Redirecting " +
                     "you to the login page."));
-                setTimeout(function() {
+                setTimeout(function () {
                     location.href = "login";
                 }, 3000);
             }

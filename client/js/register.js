@@ -6,7 +6,7 @@ $(document).ready(function () {
         $.post("register_user", jsonData, function (data) {
                 $(".register-btn").after($("<div class='alert alert-success'>").html("<strong>Register successful!</strong> Redirecting " +
                     "you to the login page."));
-                setTimeout(function() {
+            setTimeout(function () {
                     location.href = "login";
                 }, 3000);
             }
