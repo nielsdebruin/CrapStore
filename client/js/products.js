@@ -1,11 +1,17 @@
+/**
+ * Event handlers for the products page
+ */
+
 $(document).ready(function () {
+    var addToCartBtn = $(".addToCartBtn");
+
+    // Handles the back button during search results mode
     $("#search-back").on("click", function () {
         location.href = "products";
     });
-});
 
-$(document).ready(function () {
-    $(".addToCartBtn").each(function () {
+    // Sets all 'Add to cart' buttons to their initial state
+    addToCartBtn.each(function () {
         if (cart.inCart($(this).data("id").toString())) {
             $(this).removeClass("btn-primary");
             $(this).html("IN CART");
@@ -13,7 +19,8 @@ $(document).ready(function () {
         }
     });
 
-    $(".addToCartBtn").click(function () {
+    // Handles 'Add to cart' button clicks, either adding the item, or removing it, if already added
+    addToCartBtn.click(function () {
         var el = $(this);
         if (el.hasClass("product-in-cart")) {
             // Product already in cart

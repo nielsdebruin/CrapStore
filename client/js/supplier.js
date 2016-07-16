@@ -1,4 +1,9 @@
+/**
+ * Event handlers for the supplier page
+ */
+
 $(document).ready(function () {
+    // Handles supplier form submissions (used for changing the information of a given product)
     $(".supplier-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();
@@ -14,6 +19,7 @@ $(document).ready(function () {
         );
     });
 
+    // Handles add product form submissions (used for adding a new product)
     $(".add-product-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();
@@ -29,6 +35,7 @@ $(document).ready(function () {
         );
     });
 
+    // Handles remove product button clicks
     $(".remove-btn").on("click", function (e) {
         var that = this;
         var id = $(that).attr("data-id");

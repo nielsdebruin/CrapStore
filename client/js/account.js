@@ -1,4 +1,9 @@
+/**
+ * Event handlers for the user account page
+ */
+
 (function () {
+    // Connects the left bar with changes of sections upon click
     var $selection = $(".account section");
     $selection.hide();
     $selection.first().show();
@@ -8,6 +13,7 @@
         $(".account section:nth-child(" + ($(".account-sidebar a").index($(this)) + 1) + ")").show()
     });
 
+    // Handles account form submissions (used to change user info)
     $("#account-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();
@@ -18,12 +24,12 @@
                 setTimeout(function () {
                     $(".alert-success").remove();
                     location.reload(true);
-                    console.log(jsonData);
                 }, 1500);
             }
         );
     });
 
+    // Handles supplier form submissions (used to become a supplier)
     $("#become-supplier-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();

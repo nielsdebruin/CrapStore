@@ -1,5 +1,10 @@
+/**
+ * Cart object, responsible for putting items in the cart, removing them and updating the cart's information.
+ */
+
 var cart = {
     "EXPIRES": 7,
+    // Adds a new item to the cart
     "add": function (id, updateAmount) {
         var items = (Cookies.get("cartItems")) ? Cookies.get("cartItems").split(",") : [];
 
@@ -7,9 +12,9 @@ var cart = {
             items.push(id);
             cart.updateTotal(updateAmount)
         }
-        console.log(items);
         Cookies.set("cartItems", items.join(","), {"expires": 7})
     },
+    // Removes an item from the cart
     "remove": function (id, updateAmount) {
         var items = (Cookies.get("cartItems")) ? Cookies.get("cartItems").split(",") : [];
 
@@ -17,9 +22,9 @@ var cart = {
             items.splice(items.indexOf(id), 1);
             cart.updateTotal(-1 * parseFloat(updateAmount));
         }
-        console.log(items);
         Cookies.set("cartItems", items.join(","), {"expires": 7})
     },
+    // Update the cart total
     "updateTotal": function (updateAmount) {
         updateAmount = parseFloat(updateAmount);
 
@@ -38,6 +43,7 @@ var cart = {
 
         $("#cart-subtotal").html(cartTotal);
     },
+    // Checks whether an item is already present in the cart
     "inCart": function (id) {
         var items = (Cookies.get("cartItems")) ? Cookies.get("cartItems").split(",") : [];
         return (items.indexOf(id) > -1);

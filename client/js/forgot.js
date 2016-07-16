@@ -1,4 +1,9 @@
+/**
+ * Event handler for the 'Forgot Password' page
+ */
+
 $(document).ready(function () {
+    // Handles 'Forgot Password' form submissions (used for resetting the password)
     $("#forgot-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();

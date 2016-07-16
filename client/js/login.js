@@ -1,4 +1,9 @@
+/**
+ * Event handler for the login page
+ */
+
 $(document).ready(function () {
+    // Handles login form submissions
     $("#login-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();

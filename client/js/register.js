@@ -1,4 +1,9 @@
+/**
+ * Event handler for the user registering page
+ */
+
 $(document).ready(function () {
+    // Handles registration form submissions (used for creating a new user account)
     $("#register-form").on("submit", function (e) {
         e.preventDefault();
         var jsonData = $(this).serialize();
