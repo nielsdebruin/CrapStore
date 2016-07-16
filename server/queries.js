@@ -1,5 +1,10 @@
+/**
+ * Handles all database queries
+ */
+
 var pool = require("./database");
 
+// Product related queries
 module.exports.products = {
     "getAll": function (ids, callback) {
         var query;
@@ -87,6 +92,7 @@ module.exports.products = {
     }
 };
 
+// Guest book related queries
 module.exports.guestBookEntries = {
     "getAll": function (callback) {
         pool.getConnection(function (err, connection) {
@@ -112,6 +118,7 @@ module.exports.guestBookEntries = {
     }
 };
 
+// Account related queries
 module.exports.account = {
     "info": function (userId, callback) {
         pool.getConnection(function (err, connection) {
@@ -221,9 +228,9 @@ module.exports.account = {
     }
 };
 
+// Product order related queries
 module.exports.orders = {
     "order": function (order, callback) {
-        console.log(order, order.products.join(','));
         pool.getConnection(function (err, connection) {
             if (err) return callback(err);
 
