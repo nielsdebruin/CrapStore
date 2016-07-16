@@ -30,7 +30,7 @@ Perform these penetration tests on websites only if you have the written consent
 
 ## Installation
 
-1. To setup the MySQL database instance, run `schema.sql` and `sample.sql` (as well as any time you want a fresh install of the database). 
+1. To setup the MySQL database instance, run `schema.sql` and `sample.sql`, located in the `database` folder (as well as any time you want a fresh install of the database). 
 2. All required NPM packages are listed in the `package.json` file. That just leaves you to run `npm install`, which installs all necessary packages. 
 3. Then, `bower install` will download and insert the necessary dependencies into the project (such as jQuery or Bootstrap).
 4. This is a grunt-based project, thus executing the `serve` task of grunt (by executing `grunt serve`) starts the server on <http://localhost:1337>.
